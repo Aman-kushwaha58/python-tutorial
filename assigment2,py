@@ -1,0 +1,37 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# Function to handle the button click
+def show_greeting():
+    name = entry_name.get()
+    try:
+        age = int(entry_age.get())
+        year_to_turn_100 = 2025 - age + 100
+        message = f"Hello, {name}! You are {age} years old.\nYou will turn 100 years old in the year {year_to_turn_100}."
+        messagebox.showinfo("Greeting", message)
+    except ValueError:
+        messagebox.showerror("Error", "Please enter a valid age.")
+
+# Set up the main window
+window = tk.Tk()
+window.title("User Greeting App")
+
+# Create labels and entry fields
+label_name = tk.Label(window, text="Enter your name:")
+label_name.pack(pady=5)
+
+entry_name = tk.Entry(window)
+entry_name.pack(pady=5)
+
+label_age = tk.Label(window, text="Enter your age:")
+label_age.pack(pady=5)
+
+entry_age = tk.Entry(window)
+entry_age.pack(pady=5)
+
+# Create a button to trigger the greeting
+button_greet = tk.Button(window, text="Get Greeting", command=show_greeting)
+button_greet.pack(pady=10)
+
+# Run the app
+window.mainloop()
